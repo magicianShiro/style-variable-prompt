@@ -14,4 +14,4 @@ vscode 编辑器上搜索安装
  + less
 
 ## 配置
- + `test.variableFilePath` 预处理器变量文件所在的路径数组**注意需要配置绝对路径**
+ + `styleVariablePrompt.variableFilePath` 预处理器变量文件所在的路径数组**注意需要配置绝对路径**

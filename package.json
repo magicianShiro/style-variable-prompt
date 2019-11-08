@@ -32,9 +32,9 @@
 	"contributes": {
 		"configuration": {
 			"type": "object",
-			"title": "test configure",
+			"title": "styleVariablePrompt configure",
 			"properties": {
-				"test.variableFilePath": {
+				"styleVariablePrompt.variableFilePath": {
 					"type": "array",
 					"description": "变量的路径"
 				}

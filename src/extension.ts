@@ -5,7 +5,7 @@ import traverse from './traverse'
 
 export function activate(context: vscode.ExtensionContext) {
 	const LANS = ['less', 'scss'];
-	const config = vscode.workspace.getConfiguration('test')
+	const config = vscode.workspace.getConfiguration('styleVariablePrompt')
 	const pathArray: string[] = config.variableFilePath
 	
 	Promise.all(pathArray.map(path => readFile(path)))
