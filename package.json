@@ -11,6 +11,7 @@
 		"variable prompt",
 		"style variable prompt"
 	],
+	"publisher": "magicianShiro",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.39.0"
