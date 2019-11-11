@@ -26,7 +26,6 @@ export default class Provider implements vscode.CompletionItemProvider {
         const fileterVariableObjecValue = Object.values(this.variableObject).filter(variableValue => {
           return variableValue.startsWith(inputValue)
         })
-
         if (fileterVariableObjectKey.length !== 0) {
           const itemArray = this.createCompletionItem(fileterVariableObjectKey, this.variableObject)
           return resolve(itemArray);
@@ -54,7 +53,7 @@ export default class Provider implements vscode.CompletionItemProvider {
 
   createCompletionItem(keyArray: string[], originObject: { [key: string]: string }) {
     return keyArray.reduce((prev: vscode.CompletionItem[], key) => {
-      const keyToKey = new vscode.CompletionItem(`${key} => ${key}`, vscode.CompletionItemKind.Snippet);
+      const keyToKey = new vscode.CompletionItem(`${key}`, vscode.CompletionItemKind.Snippet);
       const keyToValue = new vscode.CompletionItem(`${key} => ${originObject[key]}`, vscode.CompletionItemKind.Snippet);
       keyToKey.insertText = key + ';'
       keyToValue.insertText = originObject[key] + ';'

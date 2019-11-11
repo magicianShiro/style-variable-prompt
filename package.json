@@ -26,7 +26,8 @@
 	],
 	"activationEvents": [
 		"onLanguage:less",
-		"onLanguage:scss"
+		"onLanguage:scss",
+		"onLanguage:vue"
 	],
 	"main": "./out/extension.js",
 	"contributes": {

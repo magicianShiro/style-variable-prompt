@@ -29,7 +29,7 @@ export class Scss extends Style implements IStyle {
   private inputReg: RegExp
   constructor() {
     super()
-    this.singleReg = /^$.*?;/gm
+    this.singleReg = /^\$.*?;/gm
     this.inputReg = /:\s*(.*)/
   }
   getVariableObject(body: string) {
