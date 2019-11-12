@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path'
 import * as fs from 'fs'
+import { LAN } from './traverse'
 import { traverseParams } from './traverse'
 
 // 获取实际路径
@@ -13,12 +14,11 @@ export function getPath(url: string): string {
   return path.join(root, url.replace(root, ''))
 }
 
-
 export function readFile(filePath: string): Thenable<traverseParams> {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (err, body) => {
       if (err) reject(err)
-      const extname = path.extname(filePath).split('.')[1];
+      const extname = path.extname(filePath).split('.')[1] as LAN;
       resolve({ body, extname })
     })
   })

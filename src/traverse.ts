@@ -4,15 +4,15 @@ export type LAN = 'less' | 'scss'
 
 export type traverseParams = {
   body: string,
-  extname: string
+  extname: LAN
 }
 
 export type classificationResult = {
-  [key: string]: Array<string>
+  [key in LAN]: Array<string>
 }
 
 export type traverseResult = {
-  [key: string]: {
+  [key in LAN]: {
     [key: string]: string
   }
 }
@@ -27,7 +27,7 @@ export function classification(traverseArray: traverseParams[]) {
   return traverseArray.reduce((prev: classificationResult, traverse) => {
     (prev[traverse.extname] || (prev[traverse.extname] = [])).push(traverse.body)
     return prev
-  }, {})
+  }, {} as classificationResult)
 }
 
 /**
@@ -38,21 +38,13 @@ export function classification(traverseArray: traverseParams[]) {
  * @returns {{ scss: [{ key: value }], less: [{ key: value }] }}
  */
 export default function traverse (traverseObject: classificationResult) {
-  return Object.keys(traverseObject).reduce((prev: traverseResult, extname) => {
+  return (Object.keys(traverseObject) as Array<LAN>).reduce((prev: traverseResult, extname) => {
     traverseObject[extname].forEach(body => {
       Object.assign((prev[extname] || (prev[extname] = {})),
       strategy[extname as keyof IStrategy].getVariableObject(body))
     })
     return prev
-    // strategy[extname as keyof IStrategy].getVariableObject(traverse.body)
-  }, {})
-  
-  // const traverseResult = traverseArray.map(traverse => {
-  //   return strategy[traverse.extname as keyof IStrategy].getVariableObject(traverse.body)
-  // })
-  // return traverseResult.reduce((prev: { [key: string]: string }, object) => {
-  //   return Object.assign(prev, object)
-  // }, {})
+  }, {} as traverseResult)
 }
 // /**
 //  * 将变量文件读取成键值对形式
