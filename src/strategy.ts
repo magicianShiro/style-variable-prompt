@@ -30,7 +30,7 @@ export class Scss extends Style implements IStyle {
   constructor() {
     super()
     this.singleReg = /^\$.*?;/gm
-    this.inputReg = /:\s*(.*)/
+    this.inputReg = /:\s*([^@|$]*)(.*)/
   }
   getVariableObject(body: string) {
     return super.converVariableToObject(body, this.singleReg)
@@ -48,7 +48,7 @@ export class Less extends Style implements IStyle {
   constructor() {
     super()
     this.singleReg = /^@.*?;/gm
-    this.inputReg = /:\s*(.*)/
+    this.inputReg = /:\s*([^@|$]*)(.*)/
   }
   getVariableObject(body: string) {
     return super.converVariableToObject(body, this.singleReg)

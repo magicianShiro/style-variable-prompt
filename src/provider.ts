@@ -8,7 +8,7 @@ export default class Provider implements vscode.CompletionItemProvider {
   constructor(variableObject: { [key: string]: string }) {
     this.variableObject = variableObject
     this.reverseVariableObject = this.reverseObject(variableObject)
-    this.inputReg = /:\s*(.*)/
+    this.inputReg = /:\s*([^@|$]*)(.*)/
   }
 
   provideCompletionItems (
@@ -41,7 +41,7 @@ export default class Provider implements vscode.CompletionItemProvider {
   convert(text: string) {
     let match = this.inputReg.exec(text)
     if (!match) return '';
-    return match[1].trim()
+    return match[2].trim()
   }
 
   reverseObject(object: { [key: string]: string }) {
